@@ -1,0 +1,10 @@
+# Rime configuration - easy_en
+patch:
+
+# 关闭连续输入增强
+  engine/filters:
+    - uniquifier
+
+# librime-lua 输入动态时间和日期
+  "engine/translators/@3": lua_translator@date_translator
+  "engine/translators/@4": lua_translator@time_translator

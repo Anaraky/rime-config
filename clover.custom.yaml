@@ -1,0 +1,26 @@
+patch:
+
+  # 加载语言模型
+  # 是否使用语言模型优化输出结果〔需配合grammar使用〕
+  "translator/contextual_suggestions": true
+  grammar:
+    language: zh-hant-t-s1-bgc
+  # 最大同音簇长度〔需配合grammar使用〕
+  "translator/max_homophones": 7
+  # 最大同形簇长度〔需配合grammar使用〕
+  "translator/max_homographs": 7
+
+  # lua
+  engine/translators/@3: lua_translator@date_translator
+
+  # easy_en
+  schema/dependencies/@next: easy_en
+  engine/translators/@next: table_translator@easy_en
+  easy_en:
+    __include: easy_en.schema:/translator
+    enable_completion: true
+    enable_sentence: true
+    initial_quality: 0
+  recognizer/patterns/uppercase: ''
+  speller/alphabet:
+    __include: easy_en.schema:/speller/alphabet
